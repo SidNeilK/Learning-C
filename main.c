@@ -451,21 +451,103 @@ int main() {
     // Benefit: They help avoid wasting memory by allowing you to pass
     // the address of a large data structure instead of copying the entire data.  
     
-    int age = 25;
-    int *pAge = &age;
-    birthday(pAge);
+    // int pet = 0;
+    // int *pPet = &pet;
+    // printf("Address of pet: %p\n", (void*)(&pet));
+    // printf("Address of pet: %p\n", (void*)(&pet+1));
+    // printf("Address of pet: %p\n", (void*)(&pet-1));
+
+    // char cpet = 0;
+    // char *cpPet = &cpet;
+    // printf("\nAddress of cpet: %p\n", (void*)(&cpet));
+    // printf("Address of cpet: %p\n", (void*)(&cpet+1));
+    // printf("Address of cpet: %p\n", (void*)(&cpet-1));
+
+    // float fpet = 0;
+    // float *pfPet = &fpet;
+    // printf("\nAddress of fpet: %p\n", (void*)(&fpet));
+    // printf("Address of fpet: %p\n", (void*)(&fpet+1));
+    // printf("Address of fpet: %p\n", (void*)(&fpet-1));
+
+    // double dpet = 0;
+    // double *dfPet = &dpet;
+    // printf("\nAddress of dpet: %p\n", (void*)(&dpet));
+    // printf("Address of dpet: %p\n", (void*)(&dpet+1));
+    // printf("Address of dpet: %p\n", (void*)(&dpet-1));
+
+    char strArr[] = {'1', '2', '3', '4', '5', '6', '7', '8', '9'};
+    printf("Size of strArr: %zu\n", sizeof(strArr));
+    for (int i=0; i<sizeof(strArr)/sizeof(strArr[0]); i++){
+        printf("Address of strArr[%d]: %p\n", i, (void*)(&strArr[i]));
+        printf("Value of strArr[%d]: %c\n", i, strArr[i]);
+    };
+    printf("Address of strArr: %p\n", (void*)(&strArr));
+    char strArr1[] = "123456789";
+    printf("Size of strArr1: %zu\n", sizeof(strArr1));
+    for(int i=0; i<sizeof(strArr1)/sizeof(strArr1[0]); i++){
+        printf("Address of strArr1[%d]: %p\n", i, (void*)(&strArr1[i]));
+        printf("Value of strArr1[%d]: %c\n", i, strArr1[i]);
+    };
+    char strArr2[] = "123456789";
+    printf("Size of strArr2: %zu\n", sizeof(strArr2));
+    for(int i=0; i<sizeof(strArr2)/sizeof(strArr2[0]); i++){
+        printf("Address of strArr2[%d]: %p\n", i, (void*)(&strArr2[i]));
+        printf("Value of strArr2[%d]: %c\n", i, strArr2[i]);
+    };
+    char *pStrArr2 = NULL;
+    printf("%s\n", *pStrArr2);
+
+
+    // int age = 25;
+    // int *pAge = &age;
+    // birthday(pAge);
     // x      → value
     // &x     → address of x
     // p      → stores an address
     // *p     → value at that address
+    // printf("Your age is now %d.\n", age);
 
-    printf("Your age is now %d.\n", age);
+    // Bitwise operators - special operators used in bit level programming
+    // &  → bitwise AND
+    // |  → bitwise OR
+    // ^  → bitwise XOR
+    // ~  → bitwise NOT
+    // << → left shift
+    // >> → right shift
+    //int x=6; // 0000 0110
+    //int y=12;// 0000 1100
+    //int z=0; // 0000 0000
+
+    // z=x&y; // 0000 0100
+    // both need to be 1 to result in 1, rest are 0
+    // printf("x & y (AND) = %d\n", z);
+    // z=x|y; // 0000 1110
+    // printf("x | y (OR) = %d\n", z);
+    // only one of the bits needs to be 1 to result in 1, rest are 0
+    // z=x^y; // 0000 1010
+    // printf("x ^ y (XOR) = %d\n", z);
+    // either x or y needs to be 1, but not both, to result in 1, rest are 0
+    // z=~x; // 1111 1001
+    // printf("~x (NOT) = %d\n", z);
+    // flips all the bits of 
+    // z=x<<1; // 0000 1100
+    // printf("x << 1 (LEFT SHIFT) = %d\n", z);
+    // shifts all the bits of x to the left by 1 position
+    // shift binary to the left, it effectively doubles the value
+    // z=x>>1; // 0000 0011
+    // printf("x >> 1 (RIGHT SHIFT) = %d\n", z);
+    // shift binary to the right, it effectively halves the value
+    // shifts all the bits of x to the right by 1 position
+
+
+
+
    return 0;
 }
 void birthday(int *age){
     (*age)++;
     // all our function wants is an address to an integer variable
-    //what we are doing here is incrementing the address of age
+    //what we are doing here is incrementing the age
     // we need to dereference it using the dereference operator
     // functions in c are pass-by-value, meaning the original variable is not modified inside the function
     // what we need to do is pass by reference using a pointer
